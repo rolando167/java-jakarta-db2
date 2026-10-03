@@ -73,6 +73,20 @@ Mapeo Manual con Streams: Uso de la API de Streams de Java para transformar enti
 ¡Cópialo, guárdalo en tu repositorio y que tengas muchísima suerte en la entrevista de las 10:00! Estás súper preparado. ¡A por todas! 🚀🍀
 
 
+## 🚀 Guía Rápida: Endpoints y Prácticas Java (Jakarta EE)
+
+### 1. Endpoints Principales (JAX-RS)
+- **Recurso Profesores:** `@Path("/profesores")`
+- **URL Base de Pruebas (GET):**
+  ```text
+  http://localhost:9090/mi-proyecto-jakarta/api/profesores
+  
+  
+ -- Ejemplo con cURL:
+
+curl -X GET http://localhost:9090/mi-proyecto-jakarta/api/profesores \
+     -H "Accept: application/json"
+     
 ----------------------------
 Buscar un archivo con powershell: ProfesorResource.java
 -- SOLO EN TU USUARIO
@@ -87,7 +101,7 @@ Get-ChildItem -Path C:\ -Filter "ProfesorResource.java" -Recurse -ErrorAction Si
 
 
 ----------------------------
-1. Limpia y descarta los cambios locales
+# 1. Limpia y descarta los cambios locales
 Esto borrará los cambios temporales de configuración que generó tu editor y que están bloqueando el proceso:
 bash
 # 1. Descarta las modificaciones de los archivos rastreados
