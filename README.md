@@ -100,8 +100,16 @@ Post
 }
 
 
--- Vehiculos
+-- Vehiculos Servlet  
 http://localhost:9090/mi-proyecto-jakarta/legacy/vehiculos
+
+
+-- Vehiculos JSP
+http://localhost:9090/mi-proyecto-jakarta/legacy/vehiculos-jsp
+
+
+-- Vehiculos JSF
+http://localhost:9090/mi-proyecto-jakarta/vehiculos.xhtml
      
 ----------------------------
 Buscar un archivo con powershell: ProfesorResource.java
