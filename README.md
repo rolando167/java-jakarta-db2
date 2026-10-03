@@ -87,6 +87,19 @@ Mapeo Manual con Streams: Uso de la API de Streams de Java para transformar enti
 curl -X GET http://localhost:9090/mi-proyecto-jakarta/api/profesores \
      -H "Accept: application/json"
      
+-- Empleados
+http://localhost:9090/mi-proyecto-jakarta/api/empleados
+
+Post
+{
+  "nombre": "Carlos Pérez",
+  "departamento": "Tecnología",
+  "salario": 2500.00,
+  "fechaContratacion": "2024-01-15",
+  "activo": true
+}
+
+     
 ----------------------------
 Buscar un archivo con powershell: ProfesorResource.java
 -- SOLO EN TU USUARIO

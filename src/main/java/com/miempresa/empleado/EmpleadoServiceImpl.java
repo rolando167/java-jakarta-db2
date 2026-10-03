@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 public class EmpleadoServiceImpl implements EmpleadoService {
@@ -29,6 +30,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
+	@Transactional
 	public EmpleadoDTO crearEmpleado(EmpleadoDTO dto) {
 		Empleado e = new Empleado(null, dto.getNombre(), dto.getDepartamento(), dto.getSalario(),
 				dto.getFechaContratacion(), dto.getActivo());
