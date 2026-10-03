@@ -73,4 +73,17 @@ Mapeo Manual con Streams: Uso de la API de Streams de Java para transformar enti
 ¡Cópialo, guárdalo en tu repositorio y que tengas muchísima suerte en la entrevista de las 10:00! Estás súper preparado. ¡A por todas! 🚀🍀
 
 
+----------------------------
+Buscar un archivo con powershell: ProfesorResource.java
+-- SOLO EN TU USUARIO
+Get-ChildItem -Path "$env:USERPROFILE" -Filter "ProfesorResource.java" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName
 
+abrir:
+
+explorer C:\Users\Rolando\eclipse-workspace\mi-proyecto-jakarta
+
+-- TODO EL DISCO DURA MAS
+Get-ChildItem -Path C:\ -Filter "ProfesorResource.java" -Recurse -ErrorAction SilentlyContinue | Select-Object FullName
+
+
+----------------------------
