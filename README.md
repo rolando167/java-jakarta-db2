@@ -114,14 +114,14 @@ text
 
 1. Elimina la carpeta del control de Git (pero mantenla en tu disco duro)
 bash
-git rm -r --cached target/
-git rm -r --cached .settings/ .checkstyle .classpath .project
+>git rm -r --cached target/
+>git rm -r --cached .settings/ .checkstyle .classpath .project
 
 (El parámetro --cached es la clave aquí: le dice a Git que deje de rastrear la carpeta en el repositorio, pero no tocará tus archivos locales).
 2. Confirma y sube el cambio al servidor
 bash
-git commit -m "Remover carpeta target del repositorio y aplicar gitignore"
-git push origin main
+>git commit -m "Remover carpeta target del repositorio y aplicar gitignore"
+>git push origin main
 
 ----------------------------
 
