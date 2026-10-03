@@ -99,6 +99,9 @@ Post
   "activo": true
 }
 
+
+-- Vehiculos
+http://localhost:9090/mi-proyecto-jakarta/legacy/vehiculos
      
 ----------------------------
 Buscar un archivo con powershell: ProfesorResource.java
