@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Endpoints - Spring Boot</title>
+    <style>
+        :root[data-theme="dark"] {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-color: #c9d1d9;
+            --text-muted: #8b949e;
+            --header-bg: #21262d;
+            --input-bg: #0d1117;
+            --folder-color: #58a6ff;
+        }
+        :root[data-theme="light"] {
+            --bg-color: #f6f8fa;
+            --card-bg: #ffffff;
+            --border-color: #d0d7de;
+            --text-color: #1f2328;
+            --text-muted: #656d76;
+            --header-bg: #eaeef2;
+            --input-bg: #ffffff;
+            --folder-color: #0969da;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .top-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--header-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover { opacity: 0.9; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .card-header {
+            padding: 14px 18px;
+            background: var(--header-bg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .card-body { padding: 15px; display: none; }
+        .card-body.open { display: block; }
+        .endpoint-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .endpoint-row:last-child { border-bottom: none; }
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #fff;
+            min-width: 55px;
+            text-align: center;
+            margin-right: 12px;
+        }
+        .GET { background-color: #2da44e; }
+        .POST { background-color: #0969da; }
+        .PUT { background-color: #bf8700; }
+        .DELETE { background-color: #cf222e; }
+        .PATCH { background-color: #8250df; }
+        .ALL { background-color: #6e7781; }
+        .path { flex: 1; word-break: break-all; }
+        .method-name { color: var(--text-muted); font-style: italic; }
+        .sub-text { font-size: 12px; color: var(--text-muted); font-weight: normal; margin-left: 8px; }
+        .folder-path { 
+            font-size: 11px; 
+            color: var(--folder-color); 
+            font-family: monospace; 
+            font-weight: normal;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🗺️ Mapa de Controllers & Endpoints (Spring Boot)</h2>
+        
+        <div class="top-bar">
+            <input type="text" id="searchInput" onkeyup="filtrar()" placeholder="🔍 Buscar por Controller, Ruta, Archivo o Método...">
+            <button onclick="toggleAll()">↕️ Expandir / Colapsar Todo</button>
+            <button onclick="toggleTheme()">🌓 Cambiar Tema</button>
+        </div>
+
+        <div id="controllersList">
+    
+        </div>
+    </div>
+
+    <script>
+        function toggleCard(header) {
+            const body = header.nextElementSibling;
+            body.classList.toggle('open');
+        }
+
+        let allExpanded = false;
+        function toggleAll() {
+            allExpanded = !allExpanded;
+            document.querySelectorAll('.card-body').forEach(b => {
+                if(allExpanded) b.classList.add('open');
+                else b.classList.remove('open');
+            });
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+
+        function filtrar() {
+            const filter = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.controller-card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    card.style.display = "";
+                    if(filter.length > 1) {
+                        card.querySelector('.card-body').classList.add('open');
+                    }
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+    
