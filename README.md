@@ -87,3 +87,44 @@ Get-ChildItem -Path C:\ -Filter "ProfesorResource.java" -Recurse -ErrorAction Si
 
 
 ----------------------------
+1. Limpia y descarta los cambios locales
+Esto borrará los cambios temporales de configuración que generó tu editor y que están bloqueando el proceso:
+bash
+# 1. Descarta las modificaciones de los archivos rastreados
+git checkout -- .project target/
+
+# 2. Elimina el archivo no rastreado (.checkstyle)
+git clean -df
+Usa el código con precaución.
+2. Baja los cambios del servidor
+Una vez que tu espacio de trabajo esté limpio, ya puedes actualizar tu proyecto sin problemas:
+bash
+git pull
+Usa el código con precaución.
+💡 Un consejo para el futuro
+Para que esto no te vuelva a pasar cada vez que compiles tu proyecto, te recomiendo crear o editar el archivo llamado .gitignore en la raíz de tu proyecto y añadir estas líneas para que Git ignore siempre los archivos temporales de Eclipse y Maven:
+text
+/target/
+.project
+.classpath
+.settings/
+.checkstyle
+
+----------------------------
+
+1. Elimina la carpeta del control de Git (pero mantenla en tu disco duro)
+bash
+git rm -r --cached target/
+
+(El parámetro --cached es la clave aquí: le dice a Git que deje de rastrear la carpeta en el repositorio, pero no tocará tus archivos locales).
+2. Confirma y sube el cambio al servidor
+bash
+git commit -m "Remover carpeta target del repositorio y aplicar gitignore"
+git push origin main
+
+----------------------------
+
+
+----------------------------
+
+
