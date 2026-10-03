@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://w3.org">
+<html xmlns="http://w3.org" xmlns:h="jakarta.faces.html"
+	xmlns:f="jakarta.faces.core">
+<h:head>
+	<title>Listado de Vehiculos (JSF)</title>
+</h:head>
+<h:body>
+
+	<h2>Lista de Vehículos con JSF</h2>
+
+	<!-- h:dataTable es el equivalente al forEach de JSP -->
+	<h:dataTable value="#{vehiculoBean.listaVehiculos}" var="vehiculo"
+		border="1">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+            #{vehiculo.id}
+        </h:column>
+		<h:column>
+			<f:facet name="header">Marca</f:facet>
+            #{vehiculo.marca}
+        </h:column>
+		<h:column>
+			<f:facet name="header">Modelo</f:facet>
+            #{vehiculo.modelo}
+        </h:column>
+	</h:dataTable>
+
+</h:body>
+</html>
